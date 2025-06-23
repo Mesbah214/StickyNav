@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding-block: 1.5rem;
+  padding-inline: 2.4rem;
 
   button {
     background: none;
@@ -67,3 +68,23 @@
     list-style-type: none;
   }
 }
+
+
+header {
+    position: fixed !important;
+    background-color: transparent !important;
+    top: 0px;
+    z-index: 50;
+    width: 100% !important;
+
+    transition: background 0.3s ease-out;
+}
+
+header.colored {
+    background-color: rgb(135, 163, 222) !important;
+}
+
+header.transparent {
+    background-color: transparent !important;
+}
+
