@@ -1,41 +1,41 @@
-class stickyheader {
+class StickyHeader {
     constructor(header) {
-        this.header = jquery(header);
-        this.headerheight = this.header.outerheight();
-        this.lastpos = 0;
+        this.header = jQuery(header);
+        this.headerHeight = this.header.outerHeight();
+        this.lastPos = 0;
         this.counter = 0;
 
-        jquery(window).on("scroll", this.onscrollhandler.bind(this));
+        jQuery(window).on("scroll", this.onScrollHandler.bind(this));
     }
 
     // show/hide header
-    onscrollhandler() {
-        let currpos = jquery(window).scrolltop();
+    onScrollHandler() {
+        let currPos = jQuery(window).scrollTop();
 
-        if (currpos - this.lastpos > 0) {
-            this.counter = math.max(this.counter - (currpos - this.lastpos), -this.headerheight);
+        if (currPos - this.lastPos > 0) {
+            this.counter = Math.max(this.counter - (currPos - this.lastPos), -this.headerHeight);
             // change color after the header is gone
-            if (this.counter === -this.headerheight) {
-                this.header.removeclass("colored").addclass("transparent");
+            if (this.counter === -this.headerHeight) {
+                this.header.removeClass("colored").addClass("transparent");
             }
         } else {
-            this.counter = math.min(this.counter + (this.lastpos - currpos), 0);
+            this.counter = Math.min(this.counter + (this.lastPos - currPos), 0);
             // change the color instantly
-            if (currpos >= this.headerheight) {
-                this.header.removeclass("transparent").addclass("colored");
+            if (currPos >= this.headerHeight) {
+                this.header.removeClass("transparent").addClass("colored");
             } else {
-                this.header.removeclass("colored").addclass("transparent");
+                this.header.removeClass("colored").addClass("transparent");
             }
         }
 
         this.header.css({
-            transform: `translatey(${this.counter}px)`,
+            transform: `translateY(${this.counter}px)`,
         });
 
-        this.lastpos = currpos;
+        this.lastPos = currPos;
     }
 }
 
-jquery(function ($) {
-    new stickyheader("header");
+jQuery(function ($) {
+    new StickyHeader("header");
 });
